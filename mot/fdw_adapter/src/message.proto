@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2020 Huawei Technologies Co.,Ltd.
+ *
+ * openGauss is licensed under Mulan PSL v2.
+ * You can use this software according to the terms and conditions of the Mulan PSL v2.
+ * You may obtain a copy of Mulan PSL v2 at:
+ *
+ *          http://license.coscl.org.cn/MulanPSL2
+ *
+ * THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
+ * EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
+ * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+ * See the Mulan PSL v2 for more details.
+ *---------------------------------------------------------------------------------------
+ *
+ * IDENTIFICATION
+ *        
+ *
+ * ---------------------------------------------------------------------------------------
+ */
+syntax = "proto3";
+
+package merge;
+
+message MergeRequest {
+  message Transaction{
+    message Row{
+      string tableName = 1;        
+      bytes key = 2;
+      bytes data= 3;
+    }
+    uint64 TxnID = 1;
+    repeated Row row = 2;
+	  uint64 startts = 3;
+	  uint64 committs = 4;
+  }
+  repeated Transaction Txn = 1;
+  string request_address = 2;
+}
+
+/***This is new.***********/
+message MergeRequestNew {
+  message Transaction{
+    message Row{
+      string tableName = 1;          
+      bytes key = 2;
+      
+      //原来直接copy一行数据
+      //bytes data= 3;
+
+      message Column{
+        uint64 id = 1;
+        bytes value = 2;
+      }
+      
+      repeated Column col = 3;
+    }
+    uint64 TxnID = 1;
+    repeated Row row = 2;
+   uint64 startts = 3;
+   uint64 committs = 4;
+  }
+  repeated Transaction Txn = 1;
+  string request_address = 2;
+}
+
+
