@@ -1178,7 +1178,9 @@ MOT::RC MOTAdaptor::Commit(::TransactionId tid)
     MOT::TxnManager *txn = GetSafeTxn();
     if (!IS_PGXC_COORDINATOR)
     {
-        return txn->Commit(tid);
+        //return txn->Commit(tid);
+        MOT_LOG_INFO("===In commit if:aria_commit===");
+        return txn->aria_Commit(tid);
     }
     else
     {

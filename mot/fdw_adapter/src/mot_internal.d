@@ -440,6 +440,7 @@ mot_internal.o: mot_internal.cpp message.pb.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/storage/index/index.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/storage/column.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/storage/catalog_column_types.h \
+ ../../../../../..//src/gausskernel/storage/mot/core/src/concurrency_control/row_header.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/utils/serializable.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/system/transaction_logger/asynchronous_redo_log/redo_log_buffer_array.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/system/transaction_logger/redo_log_buffer.h \
@@ -523,7 +524,6 @@ mot_internal.o: mot_internal.cpp message.pb.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/system/mot_engine.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/storage/row.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/storage/table.h \
- ../../../../../..//src/gausskernel/storage/mot/core/src/concurrency_control/row_header.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/infra/synchronization/affinity.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/system/common/commit_sequence_number.h \
  ../../../../../..//src/gausskernel/storage/mot/core/src/system/checkpoint/checkpoint_manager.h \
@@ -1488,6 +1488,8 @@ mot_fdw_xlog.h:
 
 ../../../../../..//src/gausskernel/storage/mot/core/src/storage/catalog_column_types.h:
 
+../../../../../..//src/gausskernel/storage/mot/core/src/concurrency_control/row_header.h:
+
 ../../../../../..//src/gausskernel/storage/mot/core/src/utils/serializable.h:
 
 ../../../../../..//src/gausskernel/storage/mot/core/src/system/transaction_logger/asynchronous_redo_log/redo_log_buffer_array.h:
@@ -1653,8 +1655,6 @@ mot_fdw_xlog.h:
 ../../../../../..//src/gausskernel/storage/mot/core/src/storage/row.h:
 
 ../../../../../..//src/gausskernel/storage/mot/core/src/storage/table.h:
-
-../../../../../..//src/gausskernel/storage/mot/core/src/concurrency_control/row_header.h:
 
 ../../../../../..//src/gausskernel/storage/mot/core/src/infra/synchronization/affinity.h:
 
