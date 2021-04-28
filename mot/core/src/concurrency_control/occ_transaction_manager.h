@@ -83,16 +83,30 @@ public:
     RC LockHeaders(TxnManager* txMan, uint32_t& numSentinelsLock);
 
     RC LockRows(TxnManager* txMan, uint32_t& numRowsLock);
-        ///
+    RC LockRows_1(TxnManager* txMan, uint32_t& numRowsLock);
+    
+
+
+    ///
     bool ValidateAndSetWriteSet(TxnManager *txMan);
+    bool ValidateAndSetWriteSet_1(TxnManager *txMan);
+    bool aria_ValidateAndSetWriteSet(TxnManager *txMan);
     bool ValidateEpoch(TxnManager *txMan);
+    bool ValidateEpoch_1(TxnManager *txMan);
     bool ValidateReadInMerge(TxnManager * txMan);
+    bool ValidateReadInMerge_1(TxnManager * txMan);
     bool ValidateWriteSetII(TxnManager *txMan);
+    bool ValidateWriteSetII_1(TxnManager *txMan);
 
     RC ExecutionPhase(TxnManager *txMan);
+    RC ExecutionPhase_1(TxnManager *txMan);
+    RC aria_ExecutionPhase(TxnManager *txMan);
+
 
     RC CommitPhase(TxnManager *txMan);
+    RC CommitPhase_1(TxnManager *txMan);
     RC PreCommitPhase(TxnManager* tx);
+    RC PreCommitPhase_1(TxnManager* tx);
 
     ///
 
@@ -102,6 +116,7 @@ public:
      * @param txMan The committing transaction.
      */
     bool WriteChanges(TxnManager* txMan);
+    bool WriteChanges_1(TxnManager* txMan);
     /** @brief remove all deleted keys from the global indices   */
     void CleanRowsFromIndexes(TxnManager* txMan);
     /** @brief Rollack insert-set due to an abort   */
@@ -160,7 +175,19 @@ public:
         }
     }
 
+    /**********************************************/
+    //related to aria
+
+    void aria_reserveRead(TxnManager *txMan);
+    RC aria_PreCommitPhase(TxnManager* tx);
+    bool aria_ValidateWriteSetII(TxnManager *txMan);
+    RC aria_CommitPhase(TxnManager *txMan);
+
+    /**********************************************/
 private:
+
+
+
     /**
      * @brief Checks whether the transaction identifier in the original row
      * in the access matches the transaction identifier in the access object.
@@ -171,6 +198,7 @@ private:
      * false positive reports).
      */
     bool QuickVersionCheck(const Access* access);
+    bool QuickVersionCheck_1(const Access* access);
     /** @brief Validate Header for insert   */
     bool QuickHeaderValidation(const Access* access);
 
@@ -179,8 +207,11 @@ private:
     void ReleaseRowsLocks(TxnManager* txMan, uint32_t numOfLocks);
     /** @var validate the read set   */
     bool ValidateReadSet(TxnManager* txMan);
+    bool ValidateReadSet_1(TxnManager* txMan);
     /** @brief validate the write set   */
     bool ValidateWriteSet(TxnManager* txMan);
+    bool ValidateWriteSet_1(TxnManager* txMan);
+
 
     // Configuration of OCC behavior
     /** @var transaction counter   */
